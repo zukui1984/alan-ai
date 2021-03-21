@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, createRef } from 'react';
 import {
   Card,
   CardActions,
@@ -12,12 +12,28 @@ import {
 import useStyles from './styles.js';
 
 const NewsCard = ({
-  article: { description, publishedAt, source, title, url, urlToImage },
-  i,}) => {
-
+  article: { description, publishedAt, source, title, url, urlToImage }, activeArticle, i }) => {
     const classes = useStyles();
+    const [elRefs, setElRefs] = useState([]);
+    const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
+
+    useEffect(() => {
+      window.scroll(0, 0);
+  
+
+      // 20 due cards will be 20 of them
+      setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || createRef()));
+    }, []);
+  
+    useEffect(() => {
+      if (i === activeArticle && elRefs[activeArticle]) {
+        scrollToRef(elRefs[activeArticle]);
+      }
+    }, [i, activeArticle, elRefs]);
+
+
   return (
-    <Card className={classes.card}>
+    <Card ref={elRefs[i]} className={ activeArticle === i ? classes.activeCard : classes.card}>
       <CardActionArea href={url} target="_blank">
         <CardMedia className={classes.media}
           image={urlToImage || "https://images.app.goo.gl/sjyoxyYwUjTthjjv8"}
