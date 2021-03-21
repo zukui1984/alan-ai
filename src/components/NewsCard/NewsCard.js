@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import classNames from 'classnames';
 
 import useStyles from './styles.js';
 
@@ -20,7 +21,6 @@ const NewsCard = ({
     useEffect(() => {
       window.scroll(0, 0);
   
-
       // 20 due cards will be 20 of them
       setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || createRef()));
     }, []);
@@ -33,10 +33,10 @@ const NewsCard = ({
 
 
   return (
-    <Card ref={elRefs[i]} className={ activeArticle === i ? classes.activeCard : classes.card}>
+    <Card className={classNames(classes.card, activeArticle === i ? classes.activeCard: null)}>
       <CardActionArea href={url} target="_blank">
         <CardMedia className={classes.media}
-          image={urlToImage || "https://images.app.goo.gl/sjyoxyYwUjTthjjv8"}
+          image={urlToImage || "https://www.industry.gov.au/sites/default/files/August%202018/image/news-placeholder-738.png"}
         />
         <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">
