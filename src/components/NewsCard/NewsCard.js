@@ -17,12 +17,12 @@ const NewsCard = ({
 
     const classes = useStyles();
   return (
-    <Card>
-      <CardActionArea>
+    <Card className={classes.card}>
+      <CardActionArea href={url} target="_blank">
         <CardMedia className={classes.media}
           image={urlToImage || "https://images.app.goo.gl/sjyoxyYwUjTthjjv8"}
         />
-        <div>
+        <div className={classes.details}>
           <Typography variant="body2" color="textSecondary" component="h2">
             {new Date(publishedAt).toDateString()}
           </Typography>
@@ -32,7 +32,7 @@ const NewsCard = ({
           </Typography>
 
         </div>
-        <Typography gutterBottom variant="h5">
+        <Typography className={classes.title} gutterBottom variant="h5">
           {title}
         </Typography>
 
@@ -44,7 +44,7 @@ const NewsCard = ({
 
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className={classes.cardActions}>
         <Button size="small" color="primary">Learn More</Button>
         <Typography variant="h5" color="textSecondary">{i + 1}</Typography>
       </CardActions>
