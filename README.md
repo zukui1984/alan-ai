@@ -1,4 +1,4 @@
-# Alan AI - Conversational voice Artificial Intelligence
+# Alan AI - Voice Assisted React Artificial Intelligence
 
 https://alan.app/
 
