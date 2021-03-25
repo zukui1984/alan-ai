@@ -11,4 +11,6 @@ Alan AI is a revolutionary speech recognition software that allows you to add vo
 
 ## Setup
 
+Live demo: https://alan-ai-news-nicky.netlify.app/
+
 run npm i && npm start to start development server
